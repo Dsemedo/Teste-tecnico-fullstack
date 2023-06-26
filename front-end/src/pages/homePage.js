@@ -6,8 +6,6 @@ import logoSolutto from "../assets/images/logo_solutto.png";
 export default function HomePage() {
   const [cnpj, setCnpj] = useState("");
 
-  const linkCnpj = `/cnpj/${cnpj.cnpj}`;
-
   function handleCnpj(e) {
     setCnpj({
       ...cnpj,
@@ -15,8 +13,6 @@ export default function HomePage() {
     });
   }
 
-  // console.log(cnpj.cnpj.length);
-  console.log(cnpj);
   const isInputEmpty = cnpj === "";
   const isInputTooShort = cnpj.cnpj?.length < 14;
   return (
@@ -33,7 +29,9 @@ export default function HomePage() {
       {isInputEmpty || isInputTooShort ? (
         <StyledLink disabled>Acessar os dados</StyledLink>
       ) : (
-        <StyledLink to={linkCnpj}>Acessar os dados</StyledLink>
+        <StyledLink to={`/relatorio.html/${cnpj.cnpj}`}>
+          Acessar os dados
+        </StyledLink>
       )}
     </Container>
   );
@@ -49,7 +47,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.img`
-  margin-bottom: 12%;
+  margin-bottom: 10%;
   height: 200px;
   width: 300px;
   color: #ffffff;

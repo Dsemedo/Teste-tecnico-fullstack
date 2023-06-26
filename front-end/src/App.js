@@ -9,7 +9,7 @@ function App() {
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/cnpj/:cnpj" element={<InfoClient />} />
+        <Route path="/relatorio.html/:cnpj" element={<InfoClient />} />
       </Routes>
     </BrowserRouter>
   );

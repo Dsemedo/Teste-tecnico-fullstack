@@ -30,15 +30,15 @@ export default function InfoClient() {
         setInfo(erro.response.data);
       });
   }, [cnpj]);
-
-  console.log(info.message);
   return (
     <Container>
       <h1>Dados do cliente</h1>
       {info.message ? (
         <>
           <Table>
-            <Valores>Esse CNPJ não está entre os nossos clientes.</Valores>
+            <Valores font="bold" align="center">
+              Esse CNPJ não está entre os nossos clientes.
+            </Valores>
           </Table>
           <StyledLink to={"/"}> Digite outro CNPJ</StyledLink>
         </>
@@ -60,7 +60,7 @@ export default function InfoClient() {
 
             <Valores>
               <h2>Data de vencimento da primeira conta em aberto:</h2>
-              <h3> R$ {dateOfFirstBill} </h3>
+              <h3> {dateOfFirstBill} </h3>
             </Valores>
           </Table>
           <StyledLink to={"/"}> Digite outro CNPJ</StyledLink>
@@ -77,20 +77,12 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  text-align: justify;
+
   h1 {
     font-size: 40px;
     font-weight: bold;
     margin-top: 5vh;
-  }
-
-  h2 {
-    font-size: 26px;
-    font-weight: bold;
-  }
-
-  h3 {
-    font-size: 22px;
-    margin-left: 10px;
   }
 `;
 
@@ -112,6 +104,17 @@ const Valores = styled.div`
   align-items: center;
   margin-bottom: 13px;
   font-size: 30px;
+  font-weight: ${(props) => props.font};
+
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 23px;
+    margin-left: 10px;
+  }
 `;
 
 const StyledLink = styled(Link)`
